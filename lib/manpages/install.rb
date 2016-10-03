@@ -22,6 +22,8 @@ module Manpages
     end
 
     def manpages
+      return [] unless File.directory?(man_dir)
+
       Dir.entries(man_dir).select do |file|
         file =~ /(.+).\d$/
       end.map {|file| File.join(man_dir, file) }

@@ -26,4 +26,12 @@ describe Manpages::Install do
     ]
   end
 
+  it 'ignores gems without a man dir' do
+    Manpages::Install.new(
+      "spec/non_existent",
+      "spec/tmp/man"
+    ).install_manpages
+    expect(Dir.glob("spec/tmp/man/**/*")).to match_array []
+  end
+
 end
