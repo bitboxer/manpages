@@ -1,22 +1,11 @@
 require 'rubygems/command_manager'
+require 'manpages'
 
 Gem::CommandManager.instance.register_command(:manpages)
 
 Gem.post_install do |installer|
-  puts "post install things"
+  source_dir = installer.spec.gem_dir
+  target_dir = File.join(installer.bin_dir, "../share/man")
 
-  require 'pry'
-  puts installer.spec.attributes.inspect
-  # puts installer.inspect
-  # Important things:
-  puts installer.bin_dir
-  puts installer.spec.gem_dir
-
-  # TODO:
-  # * find man files in gem_dir, look in gem-man for examples
-  # * copy those to bin_dir/../share/man
-  # * (but create sub directories for each man level)
-  # * create hook for rbenv
-  # * Add man_dir to metadata hash?!
-
+  Manpages::Install.new(source_dir, target_dir).install_manpages
 end
