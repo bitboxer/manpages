@@ -16,9 +16,9 @@ module Manpages
     private
 
     def link_manpage(file)
-      man_dir = File.join(@target_dir, "man#{File.extname(file)[1..-1]}")
-      FileUtils.mkdir_p(man_dir)
-      FileUtils.ln_s(file, man_dir, force: true)
+      man_target_dir = File.join(@target_dir, "man#{File.extname(file)[1..-1]}")
+      FileUtils.mkdir_p(man_target_dir)
+      FileUtils.ln_s(file, man_target_dir, force: true)
     end
 
     def manpages
