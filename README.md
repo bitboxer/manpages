@@ -27,7 +27,7 @@ simply use `man guard` and you will see the man page the gem provided.
 
 # Using this with rbenv
 
-Sadly rbenv uses shims to hide the actual the executables. This makes it impossible for
+Sadly rbenv uses shims to hide the actual executables. This makes it impossible for
 man to find the pages. The only solution is to add hooks that modify the `MANPATH`
 environment variable.
 
