@@ -7,12 +7,13 @@ require 'manpages/version'
 Gem::Specification.new do |spec|
   spec.name          = "manpages"
   spec.version       = Manpages::VERSION
-  spec.authors       = ["Your name here"]
-  spec.email         = ["Your email here"]
+  spec.authors       = ["Bodo Tasche"]
+  spec.email         = ["bodo@tasche.me"]
 
-  spec.summary       = "Add a summary"
-  spec.description   = "Add a description"
+  spec.summary       = "Adds support for man pages to rubygems"
+  spec.description   = "This is a little experiment that adds man pages support to rubygems"
   spec.license       = "MIT"
+  spec.homepage      = "https://github.com/bitboxer/manpages"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
