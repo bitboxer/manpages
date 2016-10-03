@@ -6,7 +6,7 @@ This plugin will add man pages support to ruby gems. Instead
 of adding a new command like [gem-man](https://github.com/defunkt/gem-man)
 it will try to link the files to place that the `man` command can find.
 
-With rvm it works out of the box, but sadly this means that for rbenv we
+With rvm it works out of the box, but sadly this means that for rbenv and chruby we
 need to add hooks that modify the `MANPATH` depending on the ruby version
 currently used.
 
@@ -26,6 +26,6 @@ Most man versions will automatically search this directory and no additional wor
 is required. So if you install a gem that includes a man page (e.g. guard), you can
 simply use `man guard` and you will see the man page the gem provided.
 
-# Using this with rbenv
+# Using this with rbenv/chruby
 
 ...coming soon
