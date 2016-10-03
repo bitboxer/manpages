@@ -1,6 +1,7 @@
-require 'rake/testtask'
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
 
-task default: :test
-Rake::TestTask.new("test") do |t|
-  t.pattern = "test/*_test.rb"
-end
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
+
