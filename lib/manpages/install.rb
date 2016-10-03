@@ -9,16 +9,16 @@ module Manpages
 
     def install_manpages
       manpages.each do |file|
-        copy_manpage(file)
+        link_manpage(file)
       end
     end
 
     private
 
-    def copy_manpage(file)
+    def link_manpage(file)
       man_dir = File.join(@target_dir, "man#{File.extname(file)[1..-1]}")
       FileUtils.mkdir_p(man_dir)
-      FileUtils.cp(file, man_dir)
+      FileUtils.ln_s(file, man_dir, force: true)
     end
 
     def manpages
