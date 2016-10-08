@@ -1,7 +1,7 @@
 # Manpages
 
 [![Build Status](https://travis-ci.org/bitboxer/manpages.svg?branch=master)](https://travis-ci.org/bitboxer/manpages)
-[![Gem](https://img.shields.io/gem/v/manpages.svg?maxAge=2592000)]()
+[![Gem](https://img.shields.io/gem/v/manpages.svg?maxAge=2592000)](https://rubygems.org/gems/manpages)
 
 This plugin will add man pages support to ruby gems. Instead 
 of adding a new command like [gem-man](https://github.com/defunkt/gem-man)
