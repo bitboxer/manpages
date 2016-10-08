@@ -10,9 +10,10 @@ Gem.post_install do |installer|
   Manpages::Install.new(source_dir, target_dir).install_manpages
 end
 
-Gem.post_uninstall do |uninstaller|
+Gem.pre_uninstall do |uninstaller|
+  bin_dir = uninstaller.bin_dir || Gem.bindir(uninstaller.spec.base_dir)
   source_dir = uninstaller.spec.gem_dir
-  target_dir = File.join(uninstaller.bin_dir, "../share/man")
+  target_dir = File.absolute_path(File.join(bin_dir, "../share/man"))
 
   Manpages::Uninstall.new(source_dir, target_dir).uninstall_manpages
 end
