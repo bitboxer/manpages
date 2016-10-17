@@ -8,8 +8,9 @@ of adding a new command like [gem-man](https://github.com/defunkt/gem-man)
 it will try to link the files to a place the `man` command automatically
 discovers.
 
-With rvm and chruby it works out of the box, but sadly for rbenv we need to [add
-hooks that](#using-this-with-rbenv) modify the `MANPATH` depending on the ruby version currently used.
+With rvm and chruby it works out of the box, but sadly for rbenv we need to
+[add hooks that](#using-this-with-rbenv) modify the `man` symlink depending on
+the ruby version currently used.
 
 # Installation
 
@@ -21,11 +22,21 @@ exposes them to the `man` command.
 
 # Using this with rbenv
 
-Sadly rbenv uses shims to hide the actual executables. This makes it impossible for
-man to find the pages. The only solution is to add hooks that modify the `MANPATH`
-environment variable.
+Sadly rbenv uses shims to hide the actual executables. This makes it a bit
+harder to make this gem work in that environment.
 
-This gem will [soon](https://github.com/bitboxer/manpages/issues/2) provide a hook to fix this problem.
+This gem provides hooks to change the man path for the current used ruby version.
+To install them execute the following line:
+
+```
+curl -o- https://raw.githubusercontent.com/bitboxer/manpages/master/rbenv/rbenv_hook_install.sh | bash
+```
+
+After the hooks are installed, rbenv will always change the man symlink to the
+currently used ruby version. Sadly rbenv does not provide a hook that is fired
+when switching ruby versions. This means that the path can only be corrected
+when executing a command provided by a gem. If you want to have the correct
+man page for a gem, you need to execute the command of that gem, first.
 
 # How this works
 
