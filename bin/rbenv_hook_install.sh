@@ -2,18 +2,15 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-PREFIX_MAN="$(rbenv prefix)/share/man"
+source ${DIR}/../libexec/vars.sh
+
 mkdir -p "${PREFIX_MAN}"
 
-RBENV_ROOT=`rbenv root`
+mkdir -p $EXEC_HOOK_DIR
+mkdir -p $INSTALL_HOOK_DIR
 
-HOOK_DIR="${RBENV_ROOT}/plugins/tst/etc/rbenv.d/exec"
-
-mkdir -p $HOOK_DIR
-
-cp "${DIR}/../lib/version-name-change-man.bash" $HOOK_DIR/
-
-gem install manpages
+cp "${DIR}/../lib/version-name-change-man.bash" $EXEC_HOOK_DIR/
+cp "${DIR}/../lib/install-man.bash" $INSTALL_HOOK_DIR/
 
 ln -s $PREFIX_MAN "${RBENV_ROOT}/man"
 
