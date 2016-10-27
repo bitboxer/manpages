@@ -2,8 +2,11 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
 
-if ! $(gem list -i manpages) ;then
-  gem install manpages
+if [ -z $GEM_NAME ]; then
+  GEM_NAME="manpages"
+fi
+if ! $(gem list -i "$GEM_NAME") ;then
+  gem install "$GEM_NAME"
 fi
 
 if [[ -n "$(command -v git)" && \

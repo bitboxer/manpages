@@ -11,4 +11,8 @@ rm -rf "${INSTALL_HOOK_DIR}"
 echo "removing ${EXEC_HOOK_DIR}"
 rm -rf "${EXEC_HOOK_DIR}"
 
-gem uninstall manpages
+if [ -z $GEM_NAME ]; then
+  GEM_NAME="manpages"
+fi
+
+gem uninstall "$GEM_NAME"
