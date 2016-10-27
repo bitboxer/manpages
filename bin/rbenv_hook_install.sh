@@ -6,7 +6,8 @@ if ! $(gem list -i manpages) ;then
   gem install manpages
 fi
 
-if [ -d "$(readlink -f ${SCRIPT_DIR}/.git)" ]; then
+if [[ -n "$(command -v git)" && \
+        "$(basename $(git config --local remote.origin.url))" == "manpages.git" ]]; then
   DIR=$SCRIPT_DIR
 else
   LIB_DIR="$(dirname "$(gem which manpages)")"
