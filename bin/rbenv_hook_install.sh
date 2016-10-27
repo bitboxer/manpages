@@ -13,20 +13,23 @@ else
   DIR="$(readlink -f  ${LIB_DIR}/../)"
 fi
 
-source ${DIR}/libexec/vars.sh
+if [ "$DIR" != "$(rbenv root)" ]; then
+  source ${DIR}/libexec/vars.sh
 
-mkdir -p "${PREFIX_MAN}"
+  mkdir -p "${PREFIX_MAN}"
 
-mkdir -p $EXEC_HOOK_DIR
-mkdir -p $INSTALL_HOOK_DIR
+  mkdir -p $EXEC_HOOK_DIR
+  mkdir -p $INSTALL_HOOK_DIR
 
-cp "${DIR}/lib/version-name-change-man.bash" $EXEC_HOOK_DIR/
-cp "${DIR}/lib/install-man.bash" $INSTALL_HOOK_DIR/
+  cp "${DIR}/lib/version-name-change-man.bash" $EXEC_HOOK_DIR/
+  cp "${DIR}/lib/install-man.bash" $INSTALL_HOOK_DIR/
 
-ln -s $PREFIX_MAN "${RBENV_ROOT}/man"
+  ln -s $PREFIX_MAN "${RBENV_ROOT}/man"
 
 cat <<EOM
-# add the following to ~/.bashrc:
+  # add the following to ~/.bashrc:
 MANPATH="${RBENV_ROOT}/man:\${MANPATH}"
 EOM
-
+else
+  echo "cannot find gem folder"
+fi
