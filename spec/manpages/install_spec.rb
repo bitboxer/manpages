@@ -58,4 +58,21 @@ describe Manpages::Install do
     expect(File.symlink?("spec/tmp/man/man1/example.1")).to be_truthy
     expect(File.readlink("spec/tmp/man/man1/example.1")).to eql "spec/data/man/example.1"
   end
+
+  it 'handles permission problems gracefully' do
+    FileUtils.mkdir_p("spec/tmp")
+    FileUtils.chmod(400, "spec/tmp")
+
+    expect {
+      Manpages::Install.new(
+        Gem::Specification.new(name: "manpages_test"),
+        "spec/data",
+        "spec/tmp/man"
+      ).install_manpages
+    }.to output(
+      "Problems creating symlink spec/tmp/man/man1/example.1\n" +
+      "Problems creating symlink spec/tmp/man/man2/example.2\n"
+    ).to_stdout
+    FileUtils.rm_r "spec/tmp"
+  end
 end
