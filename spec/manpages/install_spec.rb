@@ -36,4 +36,26 @@ describe Manpages::Install do
     expect(Dir.glob("spec/tmp/man/**/*")).to match_array []
   end
 
+  it 'does not overwrite file if it is not a symlink' do
+    FileUtils.mkdir_p "spec/tmp/man/man1"
+    FileUtils.touch "spec/tmp/man/man1/example.1"
+    Manpages::Install.new(
+      Gem::Specification.new(name: "manpages_test"),
+      "spec/data",
+      "spec/tmp/man"
+    ).install_manpages
+    expect(File.symlink?("spec/tmp/man/man1/example.1")).to be_falsy
+  end
+
+  it 'overwrite file if it is a symlink' do
+    FileUtils.mkdir_p "spec/tmp/man/man1"
+    FileUtils.ln_s("README.md", "spec/tmp/man/man1/example.1")
+    Manpages::Install.new(
+      Gem::Specification.new(name: "manpages_test"),
+      "spec/data",
+      "spec/tmp/man"
+    ).install_manpages
+    expect(File.symlink?("spec/tmp/man/man1/example.1")).to be_truthy
+    expect(File.readlink("spec/tmp/man/man1/example.1")).to eql "spec/data/man/example.1"
+  end
 end
