@@ -1,7 +1,4 @@
-require 'rubygems/command_manager'
 require 'manpages'
-
-Gem::CommandManager.instance.register_command(:manpages)
 
 Gem.post_install do |installer|
   source_dir = installer.spec.gem_dir
