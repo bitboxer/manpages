@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    manpages (0.2.2)
+    manpages (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -40,4 +40,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   1.13.2
+   1.13.6
