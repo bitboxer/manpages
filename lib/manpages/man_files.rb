@@ -1,6 +1,5 @@
 module Manpages
   class ManFiles
-
     def initialize(gem_dir, target_dir)
       @gem_dir    = gem_dir
       @target_dir = target_dir
@@ -15,7 +14,7 @@ module Manpages
     end
 
     def man_dir
-      @man_dir ||= File.join(@gem_dir, 'man')
+      @man_dir ||= File.join(@gem_dir, "man")
     end
 
     def man_file_path(file)
@@ -23,6 +22,5 @@ module Manpages
       man_section = file.match(/.*\.(\d*)/)
       File.join(@target_dir, "man#{man_section[1]}", basename)
     end
-
   end
 end

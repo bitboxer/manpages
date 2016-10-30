@@ -1,7 +1,5 @@
 module Manpages
-
   class Install
-
     def initialize(gem_spec, gem_dir, target_dir)
       @gem_spec   = gem_spec
       @gem_dir    = gem_dir
@@ -9,10 +7,10 @@ module Manpages
     end
 
     def install_manpages
-      link_manpages if GemVersion.new(@gem_spec).is_latest?
+      link_manpages if GemVersion.new(@gem_spec).latest?
     end
 
-    private
+  private
 
     def link_manpages
       ManFiles.new(@gem_dir, @target_dir).manpages.each do |file|
@@ -27,11 +25,9 @@ module Manpages
       begin
         FileUtils.mkdir_p(File.dirname(man_target_file))
         FileUtils.ln_s(file, man_target_file, force: true)
-      rescue => e
+      rescue
         puts "Problems creating symlink #{man_target_file}"
       end
     end
-
   end
-
 end
