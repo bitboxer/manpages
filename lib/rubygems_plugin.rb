@@ -1,4 +1,4 @@
-require 'manpages'
+require "manpages"
 
 Gem.post_install do |installer|
   source_dir = installer.spec.gem_dir
