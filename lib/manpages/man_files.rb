@@ -17,8 +17,7 @@ module Manpages
       end.map {|file| man_dir.join(file) }
     end
 
-    def man_file_path(filename)
-      file = Pathname(filename)
+    def man_file_path(file)
       man_section = file.extname.match(/\.(\d*)/)
       @target_dir.join("man#{man_section[1]}", file.basename)
     end
