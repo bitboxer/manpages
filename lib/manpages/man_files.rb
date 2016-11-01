@@ -2,6 +2,8 @@ require "pathname"
 
 module Manpages
   class ManFiles
+    attr_reader :man_dir
+
     def initialize(gem_dir, target_dir)
       @gem_dir    = gem_dir
       @target_dir = target_dir
@@ -14,10 +16,6 @@ module Manpages
       man_dir.children(false).select do |file|
         file.extname =~ /.\d$/
       end.map {|file| File.join(man_dir, file) }
-    end
-
-    def man_dir
-      @man_dir
     end
 
     def man_file_path(filename)
