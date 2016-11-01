@@ -1,26 +1,25 @@
+require "pathname"
+
 module Manpages
   class ManFiles
+    attr_reader :man_dir
+
     def initialize(gem_dir, target_dir)
-      @gem_dir    = gem_dir
-      @target_dir = target_dir
+      @target_dir = Pathname(target_dir)
+      @man_dir = Pathname(File.join(gem_dir, "man"))
     end
 
     def manpages
-      return [] unless File.directory?(man_dir)
+      return [] unless man_dir.directory?
 
-      Dir.entries(man_dir).select do |file|
-        file =~ /(.+).\d$/
-      end.map {|file| File.join(man_dir, file) }
-    end
-
-    def man_dir
-      @man_dir ||= File.join(@gem_dir, "man")
+      man_dir.children(false).select do |file|
+        file.extname =~ /.\d$/
+      end.map {|file| man_dir.join(file) }
     end
 
     def man_file_path(file)
-      basename = File.basename(file)
-      man_section = file.match(/.*\.(\d*)/)
-      File.join(@target_dir, "man#{man_section[1]}", basename)
+      man_section = file.extname.match(/\.(\d*)/)
+      @target_dir.join("man#{man_section[1]}", file.basename)
     end
   end
 end

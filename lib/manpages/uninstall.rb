@@ -20,8 +20,8 @@ module Manpages
 
     def unlink_manpage(file)
       man_target_file = ManFiles.new(@gem_dir, @target_dir).man_file_path(file)
-      FileUtils.rm(man_target_file) if File.symlink?(man_target_file) &&
-          File.readlink(man_target_file) == file
+      FileUtils.rm(man_target_file) if man_target_file.symlink? &&
+          man_target_file.readlink == file
     end
   end
 end

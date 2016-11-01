@@ -20,10 +20,10 @@ module Manpages
 
     def link_manpage(file)
       man_target_file = ManFiles.new(@gem_dir, @target_dir).man_file_path(file)
-      return if File.exist? man_target_file
+      return if man_target_file.exist?
 
       begin
-        FileUtils.mkdir_p(File.dirname(man_target_file))
+        FileUtils.mkdir_p(man_target_file.dirname)
         FileUtils.ln_s(file, man_target_file, force: true)
       rescue
         puts "Problems creating symlink #{man_target_file}"
