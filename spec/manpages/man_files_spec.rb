@@ -1,10 +1,9 @@
-require "spec_helper"
 require "fileutils"
 
 describe Manpages::ManFiles do
   context "#manpages" do
     it "returns a list of man files" do
-      expect(Manpages::ManFiles.new("spec/data", "").manpages).to match_array [
+      expect(Manpages::ManFiles.new("spec/data", "").manpages.map(&:to_s)).to match_array [
         "spec/data/man/example.1",
         "spec/data/man/example.2",
       ]
@@ -13,7 +12,7 @@ describe Manpages::ManFiles do
 
   context "#man_dir" do
     it "returns the man directory within the gem" do
-      expect(Manpages::ManFiles.new("spec/data", "").man_dir).to eq "spec/data/man"
+      expect(Manpages::ManFiles.new("spec/data", "").man_dir).to eq Pathname("spec/data/man")
     end
   end
 

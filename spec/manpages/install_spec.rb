@@ -1,4 +1,3 @@
-require "spec_helper"
 require "fileutils"
 
 describe Manpages::Install do
