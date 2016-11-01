@@ -20,7 +20,7 @@ describe Manpages::ManFiles do
     it "returns the target path of the man file" do
       expect(
         Manpages::ManFiles.new("spec/data", "spec/tmp/man").man_file_path("example.1")
-      ).to eq "spec/tmp/man/man1/example.1"
+      ).to eq Pathname("spec/tmp/man/man1/example.1")
     end
   end
 end
