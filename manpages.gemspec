@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["bodo@tasche.me"]
 
   spec.summary       = "Adds support for man pages to rubygems"
-  spec.description   = "This is a little experiment that adds man pages support to rubygems"
+  spec.description   = "With this gem the rubygems command will detect man pages within gems and exposes them to the man command."
   spec.license       = "MIT"
   spec.homepage      = "https://github.com/bitboxer/manpages"
 
