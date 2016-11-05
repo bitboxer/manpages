@@ -14,7 +14,7 @@ the ruby version currently used.
 
 # Installation
 
-`gem install manpages`
+`gem install manpages && gem manpages --update-all`
 
 This plugin automatically hooks into the ruby gems system. Every gem
 installed afterwards is checked for manpages. If this gem finds them, it

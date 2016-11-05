@@ -16,6 +16,16 @@ describe Manpages::ManFiles do
     end
   end
 
+  context "#manpages_present?" do
+    it "returns true if manpages are found" do
+      expect(Manpages::ManFiles.new("spec/data").manpages_present?).to be_truthy
+    end
+
+    it "returns false if no manpages are found" do
+      expect(Manpages::ManFiles.new("spec/data2").manpages_present?).to be_falsy
+    end
+  end
+
   context "#man_file_path" do
     it "returns the target path of the man file" do
       expect(

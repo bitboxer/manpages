@@ -4,9 +4,13 @@ module Manpages
   class ManFiles
     attr_reader :man_dir
 
-    def initialize(gem_dir, target_dir)
+    def initialize(gem_dir, target_dir = "")
       @target_dir = Pathname(target_dir)
       @man_dir = Pathname(File.join(gem_dir, "man"))
+    end
+
+    def manpages_present?
+      !manpages.empty?
     end
 
     def manpages
