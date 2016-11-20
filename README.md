@@ -54,6 +54,8 @@ The most common way in the ruby world to create a man page is through a tool
 called [ronn](https://github.com/rtomayko/ronn#readme). Ronn uses a modified
 variant of markdown as source file. More details about the format can be found
 [here](https://github.com/rtomayko/ronn/blob/master/man/ronn-format.7.ronn).
+In the newest version [kramdown](http://kramdown.gettalong.org/converter/man.html) also
+is able to generate man pages.
 
 Make sure the resulting manpage is in a folder called `man` in the root of the
 gem. Files stored in that directory will automatically be exposed to the
