@@ -17,7 +17,7 @@ module Manpages
       return [] unless man_dir.directory?
 
       man_dir.children(false).select do |file|
-        file.extname =~ /.\d$/
+        file.extname =~ /\.\d$/
       end.map {|file| man_dir.join(file) }
     end
 
