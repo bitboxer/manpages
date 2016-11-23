@@ -6,6 +6,7 @@ describe Manpages::ManFiles do
       expect(Manpages::ManFiles.new("spec/data", "").manpages.map(&:to_s)).to match_array [
         "spec/data/man/example.1",
         "spec/data/man/example.2",
+        "spec/data/man/man1/extra.1",
       ]
     end
   end

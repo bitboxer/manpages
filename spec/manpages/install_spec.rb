@@ -10,6 +10,7 @@ describe Manpages::Install do
     expect(Dir.glob("spec/tmp/man/**/*")).to match_array [
       "spec/tmp/man/man1",
       "spec/tmp/man/man1/example.1",
+      "spec/tmp/man/man1/extra.1",
       "spec/tmp/man/man2",
       "spec/tmp/man/man2/example.2",
     ]
@@ -69,7 +70,8 @@ describe Manpages::Install do
       ).install_manpages
     end.to output(
       "Problems creating symlink spec/tmp/man/man1/example.1\n" \
-      "Problems creating symlink spec/tmp/man/man2/example.2\n"
+      "Problems creating symlink spec/tmp/man/man2/example.2\n" \
+      "Problems creating symlink spec/tmp/man/man1/extra.1\n"
     ).to_stdout
     FileUtils.rm_r "spec/tmp"
   end

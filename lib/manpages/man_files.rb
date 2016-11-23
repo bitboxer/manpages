@@ -16,9 +16,9 @@ module Manpages
     def manpages
       return [] unless man_dir.directory?
 
-      man_dir.children(false).select do |file|
-        file.extname =~ /\.\d$/
-      end.map {|file| man_dir.join(file) }
+      Dir[man_dir.join("**/*")].select do |file|
+        file =~ /\.\d$/
+      end.map {|file| Pathname.new(file) }
     end
 
     def man_file_path(file)
