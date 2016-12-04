@@ -5,6 +5,10 @@ describe Manpages::Uninstall do
     FileUtils.mkdir_p("spec/tmp/man/man1")
   end
 
+  after do
+    FileUtils.rm_r "spec/tmp"
+  end
+
   it "Deletes a manpage if the link is to this gem" do
     FileUtils.ln_s("spec/data/man/example.1", "spec/tmp/man/man1/example.1")
     Manpages::Uninstall.new(
