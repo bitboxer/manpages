@@ -1,6 +1,10 @@
 require "fileutils"
 
 describe Manpages::Install do
+  after do
+    FileUtils.rm_r "spec/tmp"
+  end
+
   it "copies the man pages to a correct directory structure" do
     Manpages::Install.new(
       Gem::Specification.new(name: "manpages_test"),
@@ -71,6 +75,5 @@ describe Manpages::Install do
       "Problems creating symlink spec/tmp/man/man1/example.1\n" \
       "Problems creating symlink spec/tmp/man/man2/example.2\n"
     ).to_stdout
-    FileUtils.rm_r "spec/tmp"
   end
 end
