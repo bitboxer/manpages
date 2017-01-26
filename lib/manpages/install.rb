@@ -27,8 +27,8 @@ module Manpages
       begin
         FileUtils.mkdir_p(man_target_file.dirname)
         FileUtils.ln_s(file, man_target_file, force: true)
-      rescue => e
-        puts "Problems creating symlink #{man_target_file}: #{e}"
+      rescue
+        puts "Problems creating symlink #{man_target_file}"
       end
     end
   end
