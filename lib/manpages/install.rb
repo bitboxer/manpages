@@ -1,3 +1,5 @@
+require "fileutils"
+
 module Manpages
   class Install
     def initialize(gem_spec, gem_dir, target_dir)
