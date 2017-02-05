@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.6.1](https://github.com/bitboxer/manpages/tree/0.6.1) (2017-02-05)
+[Full Changelog](https://github.com/bitboxer/manpages/compare/0.6.0...0.6.1)
+
+**Merged pull requests:**
+
+- Travis: with 2.4.0, 2.3.3 [\#40](https://github.com/bitboxer/manpages/pull/40) ([olleolleolle](https://github.com/olleolleolle))
+- Bugfix: require missing FileUtils [\#39](https://github.com/bitboxer/manpages/pull/39) ([olleolleolle](https://github.com/olleolleolle))
+
 ## [0.6.0](https://github.com/bitboxer/manpages/tree/0.6.0) (2016-12-04)
 [Full Changelog](https://github.com/bitboxer/manpages/compare/0.5.2...0.6.0)
 
