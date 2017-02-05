@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    manpages (0.6.0)
+    manpages (0.6.1)
 
 GEM
   remote: https://rubygems.org/
@@ -54,4 +54,4 @@ DEPENDENCIES
   rubocop (~> 0.44.1)
 
 BUNDLED WITH
-   1.13.6
+   1.14.0
