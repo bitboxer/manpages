@@ -1,6 +1,6 @@
 # Manpages
 
-[![Build Status](https://travis-ci.org/bitboxer/manpages.svg?branch=master)](https://travis-ci.org/bitboxer/manpages)
+[![Build Status](https://travis-ci.com/bitboxer/manpages.svg?branch=master)](https://travis-ci.com/bitboxer/manpages)
 [![Gem](https://img.shields.io/gem/v/manpages.svg)](https://rubygems.org/gems/manpages)
 
 This plugin will add man pages support to ruby gems. Instead 
