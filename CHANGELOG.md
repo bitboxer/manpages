@@ -1,5 +1,29 @@
 # Change Log
 
+## [0.7.0](https://github.com/bitboxer/manpages/tree/0.7.0) (2026-05-14)
+[Full Changelog](https://github.com/bitboxer/manpages/compare/0.6.2...0.7.0)
+
+**Changed:**
+
+- Minimum required Ruby version is now 3.0
+
+**Added:**
+
+- GitHub Actions CI replacing Travis CI, testing Ruby 3.1, 3.2, 3.3, and 3.4
+- `rubocop-rspec` added to enforce RSpec style
+
+**Fixed:**
+
+- Pinned `parallel` to `< 2.0` to maintain compatibility with Ruby 3.1 and 3.2
+- Resolved all pending RuboCop offenses (removed `.rubocop_todo.yml`)
+
+## [0.6.2](https://github.com/bitboxer/manpages/tree/0.6.2) (2026-05-14)
+[Full Changelog](https://github.com/bitboxer/manpages/compare/0.6.1...0.6.2)
+
+**Fixed:**
+
+- Bumped rake, rubocop, and rexml to resolve HIGH/MEDIUM CVEs (#45)
+
 ## [0.6.1](https://github.com/bitboxer/manpages/tree/0.6.1) (2017-02-05)
 [Full Changelog](https://github.com/bitboxer/manpages/compare/0.6.0...0.6.1)
 
