@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Manpages
   class GemVersion
     def initialize(gem_spec)
@@ -11,7 +13,7 @@ module Manpages
   private
 
     def latest_gem
-      all_gem_versions.sort.last
+      all_gem_versions.max
     end
 
     def all_gem_versions

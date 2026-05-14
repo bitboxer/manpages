@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "fileutils"
 
 module Manpages
@@ -27,7 +29,7 @@ module Manpages
       begin
         FileUtils.mkdir_p(man_target_file.dirname)
         FileUtils.ln_s(file, man_target_file, force: true)
-      rescue
+      rescue StandardError
         puts "Problems creating symlink #{man_target_file}"
       end
     end

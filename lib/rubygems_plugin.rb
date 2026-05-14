@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "manpages"
 require "rubygems/command_manager"
 require "rubygems/version_option"
