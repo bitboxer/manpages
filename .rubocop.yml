@@ -1,6 +1,10 @@
+plugins:
+  - rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 3.0
   NewCops: disable
+  SuggestExtensions: false
   Exclude:
     - tmp/**/*
     - lib/bundler/vendor/**/*
@@ -136,4 +140,14 @@ Metrics/ParameterLists:
 # It will be obvious which code is complex, Rubocop should only lint simple
 # rules for us.
 Metrics/PerceivedComplexity:
+  Enabled: false
+
+# RSpec
+
+# Integration tests naturally need more than 5 lines to set up, act, and assert.
+RSpec/ExampleLength:
+  Max: 15
+
+# Integration tests legitimately verify multiple things in one example.
+RSpec/MultipleExpectations:
   Enabled: false

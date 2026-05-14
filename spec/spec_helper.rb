@@ -7,11 +7,11 @@ require "pry"
 require_relative "../lib/manpages"
 
 RSpec.configure do |config|
-  config.before(:each) do
+  config.before do
     FileUtils.mkdir_p("spec/tmp")
   end
 
-  config.after(:each) do
+  config.after do
     FileUtils.rm_rf("spec/tmp")
   end
 end
