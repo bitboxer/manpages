@@ -4,8 +4,12 @@ updates:
     directory: /
     schedule:
       interval: daily
+    cooldown:
+      default-days: 3
 
   - package-ecosystem: bundler
     directory: /
     schedule:
-      interval: daily
+      interval: "weekly"
+    cooldown:
+      default-days: 3
