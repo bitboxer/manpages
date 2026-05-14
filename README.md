@@ -1,9 +1,8 @@
 # Manpages
 
-[![Build Status](https://travis-ci.com/bitboxer/manpages.svg?branch=master)](https://travis-ci.com/bitboxer/manpages)
 [![Gem](https://img.shields.io/gem/v/manpages.svg)](https://rubygems.org/gems/manpages)
 
-This plugin will add man pages support to ruby gems. Instead 
+This plugin will add man pages support to ruby gems. Instead
 of adding a new command like [gem-man](https://github.com/defunkt/gem-man)
 it will try to link the files to a place the `man` command automatically
 discovers.
@@ -29,7 +28,7 @@ This gem provides hooks to change the man path for the current used ruby version
 To install them execute the following line:
 
 ```
-curl -o- https://raw.githubusercontent.com/bitboxer/manpages/master/rbenv/rbenv_hook_install.sh | bash
+curl -o- https://raw.githubusercontent.com/bitboxer/manpages/main/rbenv/rbenv_hook_install.sh | bash
 ```
 
 After the hooks are installed, rbenv will always change the man symlink to the
@@ -40,7 +39,7 @@ man page for a gem, you need to execute the command of that gem, first.
 
 # How this works
 
-After a gem is installed, this plugin will check for a directory called `man` within the 
+After a gem is installed, this plugin will check for a directory called `man` within the
 gem and link the manpages it finds to `BIN_DIR/../share/man`, where `BIN_DIR` is the
 directory where the executable of the gem is installed.
 
