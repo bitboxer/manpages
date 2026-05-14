@@ -1,8 +1,10 @@
-inherit_from:
-  - .rubocop_todo.yml
+plugins:
+  - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 1.9
+  TargetRubyVersion: 3.0
+  NewCops: disable
+  SuggestExtensions: false
   Exclude:
     - tmp/**/*
     - lib/bundler/vendor/**/*
@@ -15,8 +17,8 @@ AllCops:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/EndAlignment:
-  AlignWith: variable
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
   AutoCorrect: true
 
 Lint/UnusedMethodArgument:
@@ -24,28 +26,37 @@ Lint/UnusedMethodArgument:
 
 # Style
 
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 
-Style/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
 
 Style/MultilineBlockChain:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
 Style/PerlBackrefs:
   Enabled: false
 
+Style/RaiseArgs:
+  Enabled: false
+
 Style/SingleLineBlockParams:
   Enabled: false
 
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   SpaceBeforeBlockParameters: false
 
 Style/TrivialAccessors:
@@ -63,7 +74,10 @@ Style/StringLiteralsInInterpolation:
 
 # Having these make it easier to *not* forget to add one when adding a new
 # value and you can simply copy the previous line.
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/TrailingUnderscoreVariable:
@@ -73,12 +87,10 @@ Style/TrailingUnderscoreVariable:
 Style/EmptyLiteral:
   Enabled: false
 
-# 1.8.7 support
-
 Style/Lambda:
   Enabled: false
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 Style/EachWithObject:
@@ -90,12 +102,20 @@ Style/SpecialGlobalVars:
 Style/TrailingCommaInArguments:
   Enabled: false
 
-Performance/FlatMap:
-  Enabled: false
+# Layout
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 130
 
 # Metrics
 
 # We've chosen to use Rubocop only for style, and not for complexity or quality checks.
+Metrics/BlockLength:
+  Enabled: false
+
 Metrics/ClassLength:
   Enabled: false
 
@@ -120,4 +140,14 @@ Metrics/ParameterLists:
 # It will be obvious which code is complex, Rubocop should only lint simple
 # rules for us.
 Metrics/PerceivedComplexity:
+  Enabled: false
+
+# RSpec
+
+# Integration tests naturally need more than 5 lines to set up, act, and assert.
+RSpec/ExampleLength:
+  Max: 15
+
+# Integration tests legitimately verify multiple things in one example.
+RSpec/MultipleExpectations:
   Enabled: false

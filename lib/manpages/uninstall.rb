@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Manpages
   class Uninstall
     def initialize(gem_spec, gem_dir, target_dir)
@@ -21,7 +23,7 @@ module Manpages
     def unlink_manpage(file)
       man_target_file = ManFiles.new(@gem_dir, @target_dir).man_file_path(file)
       FileUtils.rm(man_target_file) if man_target_file.symlink? &&
-          man_target_file.readlink == file
+        man_target_file.readlink == file
     end
   end
 end

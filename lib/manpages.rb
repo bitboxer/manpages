@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "manpages/version"
 require "manpages/install"
 require "manpages/uninstall"
